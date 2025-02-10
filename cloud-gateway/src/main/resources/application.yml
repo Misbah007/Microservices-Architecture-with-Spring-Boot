@@ -1,0 +1,64 @@
+server:
+  port: 9191
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: STUDENT-SERVICE
+          uri: lb://STUDENT-SERVICE
+          predicates:
+            - Path=/student/**
+        - id: SCHOOL-SERVICE
+          uri: lb://SCHOOL-SERVICE
+          filters:
+            - AddResponseHeader=Cache-Control, no-store, no-cache, must-revalidate, max-age=0
+            - AddResponseHeader=Pragma, no-cache
+          predicates:
+            - Path=/school/**
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak_demo:8080/realms/Miscro-services/protocol/openid-connect/certs
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak_demo:8080/realms/Miscro-services
+        registration:
+          spring-with-test-scope:
+            provider: keycloak
+            client-id: spring-with-test-scope
+            client-secret: OaS55kJsTGcO28QiIuO2k3nu3eJSvpTr
+            authorization-grant-type: authorization_code
+            scope: openid
+
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://register-service:8761/eureka/
+  instance:
+    hostname: api-gateway
+
+logging:
+  level:
+    com.netflix.discovery: DEBUG
+    org.springframework.cloud.netflix.eureka: DEBUG
+
+  logging:
+    level:
+      org:
+        springframework:
+          security: DEBUG
+          web: DEBUG
+
+
+
+
