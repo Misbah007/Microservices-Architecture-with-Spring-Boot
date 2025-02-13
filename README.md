@@ -1,4 +1,5 @@
-Prerquireties:
+Prerquireties
+
 1.Spring Boot
 2.Mysql
 3.MongoDb
