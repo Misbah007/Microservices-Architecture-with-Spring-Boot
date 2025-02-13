@@ -1,10 +1,15 @@
-Prerquireties
+Prerequisite
 
 1.Spring Boot
+
 2.Mysql
+
 3.MongoDb
+
 4.Basic understanding of Docker and Docker compose
+
 5.Spring cloud (Eureka server)
+
 6.Understaing Resitlience4j
 
 
