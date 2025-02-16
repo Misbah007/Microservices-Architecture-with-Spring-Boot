@@ -1,17 +1,67 @@
-Prerequisite
+Overview
 
-1.Spring Boot
+This project is a microservices-based architecture implemented using Spring Boot. It consists of multiple services that interact with each other, leveraging service discovery, caching, API Gateway, and circuit breaker mechanisms.
 
-2.Mysql
+Microservices
 
-3.MongoDb
+1. School Service
 
-4.Basic understanding of Docker and Docker compose
+Manages school-related operations.
 
-5.Spring cloud (Eureka server)
+Uses MySQL as the database.
 
-6.Understaing Resitlience4j
+Exposes REST APIs for CRUD operations.
+
+2. Student Service
+
+Manages student-related operations.
+
+Uses MongoDB as the database.
+
+Exposes REST APIs for CRUD operations.
+
+Supporting Services
+
+3. Discovery Server (Register Service)
+
+Implemented using Eureka Server.
+
+Allows microservices to register and discover each other.
+
+4. API Gateway
+
+Used for routing client requests to the appropriate microservice.
+
+Implements Spring Cloud Gateway.
+
+5. Caching
+
+Implemented using Spring Cache.
+
+Helps in reducing database calls and improving performance.
+
+6. Circuit Breaker
+
+Implemented using Resilience4j.
+
+Prevents failures from propagating across the system.
+
+Technologies Used
+
+Spring Boot (Microservices Framework)
+
+Spring Cloud (Eureka, API Gateway, Resilience4j)
+
+MySQL (Relational Database for School Service)
+
+MongoDB (NoSQL Database for Student Service)
+
+Spring Cache (Caching Mechanism)
+
+Docker (Containerization)
+
+Docker Swarm (Deployment & Orchestration)
+
+Nginx (For Load Balancing & Reverse Proxy)
 
 
-![Screenshot 2025-02-11 101432](https://github.com/user-attachments/assets/ea45fba6-fcc6-4885-8e77-ae69e07df126)
-![Screenshot 2025-02-13 105920](https://github.com/user-attachments/assets/09e65f98-3487-49d7-9552-1608d307298d)
